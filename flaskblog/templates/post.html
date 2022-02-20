@@ -1,0 +1,290 @@
+{% extends "layout.html" %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+{% block content %}
+<article class="media content-section" style="background: #1d2124;">
+  <img class="rounded-circle article-img"
+    src="{{ url_for('static', filename='imagefolder/' + post.author.image_file) }}">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" 
+      href="{{url_for('users.user_posts',username=post.author.username)}}">{{ post.author.username }}</a>
+      <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+      {% if post.author == current_user %}
+      <div>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1"
+          href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
+        <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal"
+          data-target="#deleteModal">Delete</button>
+      </div>
+      {% endif %}
+    </div>
+    <h2 class="article-title" style="color: #cfdde3;">{{ post.title }}</h2>
+    <p class="article-content" style="color: #e3d1d1;">{{ post.content }}</p>
+
+
+    {% if post.images is not  none %}
+
+
+    {% if post.images| count == 1 %}
+      {% for media in post.images %}
+      <center> 
+        {%if media.endswith("mp4")%}
+        <div class="center">
+          <a href="{{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> 
+            <video width="300" height="250" autoplay muted loop controls>
+                <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/mp4">
+                <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/ogg">
+            </video>
+          </a>
+        </div>
+
+        {%else%}
+        <div  class="center">
+          <div class="column">
+            <a href=" {{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> <img src="{{url_for('static', filename ='imagefolder/' + media)}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
+          </div>
+        </div>
+
+        {%endif%}
+
+      </center>
+      {%endfor%}
+    {% endif %}
+
+
+    {% if post.images| count == 2 %}
+      <div class="row" class="center">
+          {% for media in post.images %}
+            {%if media.endswith("mp4")%}
+              <div class="column">
+                <a href="{{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> <video width="250" height="300" autoplay muted loop controls>
+                  <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/mp4">
+                  <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/ogg">
+                </video></a>
+              </div>
+
+            {%else%}
+                
+                  <div class="column">
+                    <a href=" {{url_for('static', filename ='imagefolder/' + media)}}" target="_blank"> <img src="{{url_for('static', filename ='imagefolder/' + media)}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
+                  </div>
+               
+            {%endif%}
+          {%endfor%}
+
+      </div>
+    {% endif %}
+
+{% endif %}
+
+
+<br>
+
+
+<br>
+<div style="display: flex;">
+  <div style="display: flex; ">
+    <h5><img src="{{url_for('static', filename ='imagefolder/like.gif')}}" alt="Snow" style="width:25px;height:30px;padding:0px" align:right><h5>{{current_user.post_number_of_likes(post)}}</h5>
+
+  </div>
+
+  <div style="display: flex;">
+    <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}}" alt="Snow" style="width:25px;height:30px;padding:0px"><h5>{{current_user.number_of_comments(post)}}</h5>
+
+  </div>
+</div>
+
+            
+<br> 
+             {%if current_user.has_liked_post(post)%}
+
+            <div class="btn-toolbar pull-left">
+              <a href="{{url_for('posts.action_like', post_id=post.id, action = 'unlike')}}"> <button  class="btn mr-3 btn-secondary btn-sm like" memberid = {{post.id}}><i class="fa fa-thumbs-up">  Unlike  </i> </button></a>
+             <a href="{{url_for('posts.post', post_id=post.id)}}"> <button class="btn mr-3 btn-sm btn-dark"><i class="fa fa-commenting-o">Comment</i> </button></a>
+          </div>
+
+          {%else%}
+             
+          <div class="btn-toolbar pull-left">
+            <a href="{{url_for('posts.action_like', post_id=post.id, action = 'like')}}"> <button  class="btn mr-3 btn-primary btn-primary btn-sm like" memberid = {{post.id}}><i class="fa fa-thumbs-up">  Like  </i> </button></a>
+           <a href="{{url_for('posts.post', post_id=post.id)}}"> <button class="btn mr-3 btn-sm btn-dark"><i class="fa fa-commenting-o">Comment</i> </button></a>
+        </div>
+
+          {%endif%}
+</article>
+<h2 style="color: #cfdde3;">Comments</h2>
+<article class="media content-section" style="background: #1d2124;" >
+  <div class="container mt-1">
+    <div class="d-flex justify-content-start row">
+      <div class="col-md-8">
+
+{% if comments.total > 0 %}
+      {% for comment in comments.items %}
+        <div class="d-flex flex-column comment-section">
+          <div class="bg-#1d2124 p-2">
+            <div class="d-flex flex-row user-info">
+              <img class="rounded-circle"
+                src="{{ url_for('static', filename='imagefolder/' + comment.comment_author.image_file) }}" width="40">
+              <div class="d-flex flex-column justify-content-start ml-2">
+              {% if comment.author_id.username == current_user.username%}
+                 <span class="d-block font-weight-bold name" style="color: #cfdde3;">author-{{comment.author_id.username}}</span>
+              {%else%}
+               <span class="d-block font-weight-bold name" style="color: #cfdde3;">{{comment.author_id.username}}</span>
+              {%endif%}
+                <small class="date text-black-50" style="color: #cfdde3;">Public - {{ comment.date.strftime('%Y-%m-%d %H:%M') }}</small>
+              </div>
+            </div>
+            <div class="mt-2">
+             <span><a class="article-title" href="{{url_for('comments.single_comment', comment_id = comment.id)}}">  <p class="comment-text" style="color: #cfdde3;">{{comment.comment}}</p></a></span> 
+            </div>
+          </div>
+          <br>
+
+          <div style="display: flex;">
+            <div style="display: flex; ">
+              <h5><img src="{{url_for('static', filename ='imagefolder/like.gif')}}" alt="Snow" style="width:25px;height:30px;padding:0px" align:right><h5>{{current_user.comment_number_of_likes(comment)}}</h5>
+          
+            </div>
+          
+            <div style="display: flex;">
+              <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}}" alt="Snow" style="width:25px;height:30px;padding:0px"><h5>{{current_user.number_of_reply_for_comment(comment)}}</h5>
+          
+            </div>
+          </div>
+          
+                      
+          <br> 
+                       {%if current_user.has_liked_comment(comment)%}
+          
+                       
+                       
+          
+                      <div class="btn-toolbar pull-left">
+                        <a href="{{url_for('comments.action_like', comment_id=comment.id, action = 'unlike')}}"> <button  class="btn mr-3 btn-secondary btn-sm like" memberid = {{post.id}}><i class="fa fa-thumbs-up">  Unlike  </i> </button></a>
+                        <a class="article-title" href="{{url_for('comments.single_comment', comment_id = comment.id)}}"> <button class="btn mr-3 btn-dark"><i class="fa fa-commenting-o">Replies({{current_user.number_of_reply_for_comment(comment)}})</i> </button></a>
+                    </div>
+          
+                    {%else%}
+                       
+                    <div class="btn-toolbar pull-left">
+                      <a href="{{url_for('comments.action_like', comment_id=comment.id, action = 'like')}}"> <button  class="btn mr-3 btn-primary btn-sm like" memberid = {{post.id}}><i class="fa fa-thumbs-up">  Like  </i> </button></a>
+                      <a class="article-title" href="{{url_for('comments.single_comment', comment_id = comment.id)}}"> <button class="btn mr-3 btn-sm btn-dark"><i class="fa fa-commenting-o">Replies({{current_user.number_of_reply_for_comment(comment)}})</i> </button></a>
+                  </div>
+          
+                    {%endif%}
+
+
+
+
+
+
+
+
+
+        </div>
+        <br>
+          {%endfor%}
+
+
+          {% else %}
+          <br>
+          <br>
+          <br>
+          <h2 style="color: #cfdde3;">  No Comment made yet </h2>
+      
+          {% endif %}
+
+         
+
+        
+
+
+
+      
+
+
+        <div class="bg-#1d2124 p-2" style="background-color: #1d2124;">
+          <form method="POST" , action="{{ url_for('comments.new_comment', post_id=post.id) }}">
+            {{form.hidden_tag()}}
+            <fieldset class="form-group">
+              <div class="d-flex flex-row align-items-start">
+                <img class="rounded-circle"
+                  src="{{ url_for('static', filename='imagefolder/' + current_user.image_file) }}" width="40">
+                {{form.comment.label(class = "form-control-label " )}}
+                <style>
+                  .form-control-label {color: #cfdde3;}
+               </style>
+
+                {% if form.comment.errors %}
+                {{ form.comment(class = "form-control form-control-lg is-invalid text-#cfdde3")}}
+                <div class="invalid-feedback">
+                  {% for error in form.comment.errors %}
+                  <span> {{comment}} </span>
+                  {% endfor %}
+                </div>
+                {% else%}
+                {{ form.comment(class = "form-control ml-1 shadow-none textarea color-black")}}
+                
+                {% endif %}
+              </div>
+              <div class="mt-2 text-right">
+                {{form.submit(class="btn btn-primary btn-sm shadow-none",id = "postcomment")}}
+
+              </div>
+
+
+
+            </fieldset>
+
+          </form>
+
+        {% for page_num in comments.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if comments.page == page_num %}
+          <a class="btn btn-info mb-4" href="{{ url_for('posts.post', post_id = post.id,page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('posts.post', post_id = post.id,page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</article>
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
+          <input class="btn btn-danger" type="submit" value="Delete">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

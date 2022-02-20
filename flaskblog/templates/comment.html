@@ -1,0 +1,190 @@
+{% extends "layout.html" %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+{% block content %}
+<article class="media content-section" style="background: #1d2124;">
+  <img class="rounded-circle article-img"
+    src="{{ url_for('static', filename='imagefolder/' + comment.comment_author.image_file) }}">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" 
+      href="{{url_for('users.user_posts',username=comment.comment_author.username)}}" style="background-color: #cfdde3;">{{comment.author_id.username}}</a>
+      <small class="text-muted" style="color: #cfdde3;">Public-{{ comment.date.strftime('%Y-%m-%d %H:%M') }}</small>
+    </div>
+    <h2 class="article-title" style="color: #cfdde3;">{{ comment.comment }}</h2>
+
+
+<br>
+
+<div style="display: flex;">
+  <div style="display: flex; ">
+    <h5><img src="{{url_for('static', filename ='imagefolder/like.gif')}}" alt="Snow" style="width:25px;height:30px;padding:0px" align:right><h5>{{current_user.comment_number_of_likes(comment)}}</h5>
+
+  </div>
+
+  <div style="display: flex;">
+    <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}}" alt="Snow" style="width:25px;height:30px;padding:0px"><h5>{{current_user.number_of_reply_for_comment(comment)}}</h5>
+
+  </div>
+</div>
+
+             {%if current_user.has_liked_comment(comment)%}
+
+            <div class="btn-toolbar pull-left">
+              <a href="{{url_for('comments.action_like', comment_id=comment.id, action = 'unlike')}}"> <button  class="btn mr-3 btn-secondary  btn-sm like" ><i class="fa fa-thumbs-up">  Unlike  </i> </button></a>
+              <a href="{{url_for('comments.single_comment', comment_id=comment.id)}}"> <button class="btn mr-3 btn-dark btn-sm "><i class="fa fa-commenting-o">Replies({{current_user.number_of_reply_for_comment(comment)}})</i> </button></a>
+
+          </div>
+
+        
+
+          {%else%}
+             
+          <div class="btn-toolbar pull-left">
+            <a href="{{url_for('comments.action_like', comment_id=comment.id, action = 'like')}}"> <button  class="btn mr-3 btn-primary btn-sm like"><i class="fa fa-thumbs-up">  Like  </i> </button></a>
+            <a href="{{url_for('comments.single_comment', comment_id=comment.id)}}"> <button class="btn mr-3 btn-dark btn-sm"><i class="fa fa-commenting-o">Replies({{current_user.number_of_reply_for_comment(comment)}})</i> </button></a>
+
+        </div>
+
+          {%endif%}
+</article>
+<h2>Replies</h2>
+<article class="media content-section" style="background: #1d2124;">
+  <div class="container mt-1">
+    <div class="d-flex justify-content-start row">
+      <div class="col-md-8">
+
+{% if replies.total > 0 %}
+      {% for reply in replies.items %}
+        <div class="d-flex flex-column comment-section">
+          <div class="bg-#1d2124 p-2">
+            <div class="d-flex flex-row user-info">
+              <img class="rounded-circle"
+                src="{{ url_for('static', filename='imagefolder/' + reply.reply_user.image_file) }}" width="40">
+              <div class="d-flex flex-column justify-content-start ml-2">
+              {% if reply.author_id.username == current_user.username%}
+                 <span class="d-block font-weight-bold name" style="color: #cfdde3;">author-{{reply.author_id.username}}</span>
+              {%else%}
+               <span class="d-block font-weight-bold name" style="color: #cfdde3;">{{reply.author_id.username}}</span>
+              {%endif%}
+                <small class="date text-black-50" style="color: #cfdde3;">Public - {{ reply.date.strftime('%Y-%m-%d %H:%M') }}</small>
+              </div>
+            </div>
+            <div class="mt-2">
+                 <p class="comment-text" style="color: #cfdde3;">{{reply.reply}}</p>
+            </div>
+          </div>
+          
+          <br>
+
+          <div style="display: flex;">
+            <div style="display: flex; ">
+              <h5><img src="{{url_for('static', filename ='imagefolder/like.gif')}}" alt="Snow" style="width:25px;height:30px;padding:0px" align:right><h5>{{current_user.reply_number_of_likes(reply)}}</h5>
+          
+            </div>
+          
+          </div>
+
+
+          <br>
+           
+                       {%if current_user.has_liked_reply(reply)%}
+          
+                       
+                       
+          
+                      <div class="btn-toolbar pull-left">
+                        <a href="{{url_for('replies.action_like', reply_id=reply.id, action = 'unlike')}}"> <button  class="btn mr-3 btn-secondary btn-sm like" ><i class="fa fa-thumbs-up">  Unlike  </i> </button></a>
+                    </div>
+          
+                    {%else%}
+                       
+                    <div class="btn-toolbar pull-left">
+                      <a href="{{url_for('replies.action_like', reply_id=reply.id, action = 'like')}}"> <button  class="btn mr-3 btn-primary btn-sm  like" ><i class="fa fa-thumbs-up">  Like  </i> </button></a>
+                  </div>
+          
+                    {%endif%}
+
+
+   
+
+                    
+
+
+
+
+            
+        </div>
+          {%endfor%}
+
+          {% else %}
+          <br>
+          <br>
+          <br>
+          <h2>  No replies made yet </h2>
+      
+          {% endif %}
+
+
+          <div class="bg-#1d2124 p-2" style="background-color: #1d2124;">
+            <form method="POST" , action="{{ url_for('replies.new_reply', comment_id=comment.id) }}">
+              {{form.hidden_tag()}}
+              <fieldset class="form-group">
+                <div class="d-flex flex-row align-items-start">
+                  <img class="rounded-circle"
+                    src="{{ url_for('static', filename='imagefolder/' + current_user.image_file) }}" width="40">
+                  {{form.reply.label(class = "form-control-label")}}
+                     <style>
+                    .form-control-label {color: #cfdde3;}
+                     </style>
+  
+                  {% if form.reply.errors %}
+                  {{ form.reply(class = "form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                    {% for error in form.reply.errors %}
+                    <span> {{reply}} </span>
+                    {% endfor %}
+                  </div>
+                  {% else%}
+                  {{ form.reply(class = "form-control ml-1 shadow-none textarea")}}
+                  {% endif %}
+                </div>
+                <div class="mt-2 text-right">
+                  {{form.submit(class="btn btn-primary btn-sm shadow-none",id = "postcomment")}}
+  
+                </div>
+  
+  
+  
+              </fieldset>
+  
+            </form>
+
+        </div>  
+      
+
+
+   
+
+
+        
+
+        {% for page_num in replies.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if replies.page == page_num %}
+          <a class="btn btn-info mb-4" href="{{ url_for('comments.single_comment', comment_id = comment.id,page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('comments.single_comment', comment_id = comment.id,page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+</article>
+{% endblock content %}

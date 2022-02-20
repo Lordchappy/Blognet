@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+     <div class = 'content-section' style="background: #1d2124;">
+        <form method = "POST", action = ''>
+        {{form.hidden_tag()}}  
+        <fieldset class = "form-group">
+              <legend class ="border-bottom mb-4" style="color:#cfdde3"> {{legend}} </legend>
+              <div class = "title" style="color:#cfdde3">
+                   {{ form.text.label(class = "form-control-label")}}
+                     {% if form.text.errors %}
+                        {{ form.text(class = "form-control form-control-lg is-invalid")}}
+                            <div class = "invalid-feedback" style="color:#cfdde3">
+                                {% for error in form.text.errors %}
+                                    <span> {{error}} </span>
+                                {% endfor %}
+                            </div>
+                        {% else%}
+                            {{ form.text(class = "form-control form-control-lg")}}
+                        {% endif %}             
+              </div>
+
+              <div class = "form-group" style="color:#cfdde3">
+                  {{form.result.label(class = "form-control-label")}} 
+
+                     {% if form.result.errors %}
+                        {{ form.result(class = "form-control form-control-lg is-invalid")}}
+                            <div class = "invalid-feedback">
+                                {% for error in form.result.errors %}
+                                    <span> {{error}} </span>
+                                {% endfor %}
+                            </div>
+                        {% else%}
+                            {{ form.result(class = "form-control form-control-lg")}}
+                        {% endif %}                   
+              </div>
+
+
+               <div class = "form-group" style="color:#cfdde3">
+                  {{form.per.label(class = "form-control-label")}} 
+
+                     {% if form.per.errors %}
+                        {{ form.per(class = "form-control form-control-lg is-invalid")}}
+                            <div class = "invalid-feedback">
+                                {% for error in form.per.errors %}
+                                    <span> {{error}} </span>
+                                {% endfor %}
+                            </div>
+                        {% else%}
+                            {{ form.per(class = "form-control form-control-lg")}}
+                        {% endif %}                   
+              </div>
+
+
+              
+        </fieldset>
+        <div class = "form-group" style="color:#cfdde3"> 
+           {{form.submit(class = "btn btn-outline-info")}}
+        </div>
+        </form>
+    </div>
+{% endblock content %}

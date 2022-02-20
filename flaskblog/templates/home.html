@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+<form method = "POST", action = '/search/post'>
+  
+  <div class="searchBoxContainer mb-3">
+    <div class="searchBox">
+              {% if keyword %}
+                <input class="searchInput" type="text" name="keyword" value="{{keyword}}" id ="textsearch">
+              {% else %}
+                <input class="searchInput"type="text" name="keyword" placeholder="Search post with title or content" id ="textsearch">
+              {%endif %}
+                  <button class="searchButton" id = "search">
+                            <i class="material-icons">
+                                search 
+                            </i>
+                  </button>
+      </div>
+  </div>
+
+</form>
+
+{% if posts.total > 0 %}
+
+    {% for post in posts.items %}
+        <article class="media content-section" style="background: #1d2124;" >
+         <img class ="rounded-circle article-img" src = "{{url_for('static', filename ='imagefolder/' + post.author.image_file)}}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{{url_for('users.user_posts',username =post.author.username)}}">{{ post.author.username }}</a>
+              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h2><a class="article-title" style="color: #cfdde3;" href="{{url_for('posts.post', post_id = post.id)}}">{{ post.title }}</a></h2>
+            <p class="article-content" style="color: #e3d1d1;">{{ post.content }}</p>
+
+            {% if post.images is not  none %}
+
+
+                {% if post.images| count == 1 %}
+                  {% for media in post.images %}
+                  <center> 
+                    {%if media.endswith("mp4")%}
+                    <div class="center">
+                      <a href="{{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> 
+                        <video width="300" height="250" autoplay muted loop controls>
+                            <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/mp4">
+                            <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/ogg">
+                        </video>
+                      </a>
+                    </div>
+
+                    {%else%}
+                    <div  class="center">
+                      <div class="column">
+                        <a href=" {{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> <img src="{{url_for('static', filename ='imagefolder/' + media)}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
+                      </div>
+                    </div>
+
+                    {%endif%}
+
+                  </center>
+                  {%endfor%}
+                {% endif %}
+
+
+                {% if post.images| count == 2 %}
+                  <div class="row" class="center">
+                      {% for media in post.images %}
+                        {%if media.endswith("mp4")%}
+                          <div class="column">
+                            <a href="{{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> <video width="250" height="300" autoplay muted loop controls>
+                              <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/mp4">
+                              <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/ogg">
+                            </video></a>
+                          </div>
+
+                        {%else%}
+                            
+                              <div class="column">
+                                <a href=" {{url_for('static', filename ='imagefolder/' + media)}}" target="_blank"> <img src="{{url_for('static', filename ='imagefolder/' + media)}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
+                              </div>
+                           
+                        {%endif%}
+                      {%endfor%}
+
+                  </div>
+                {% endif %}
+
+          {% endif %}
+            
+
+<br>
+<div>
+  <div style="float: left;">
+    <div style="display: flex;">
+      <div style="display: flex;float: left; ">
+        <h5><img src="{{url_for('static', filename ='imagefolder/like.gif')}}" alt="Snow" style="width:25px;height:30px;padding:0px" align:right><h5>{{current_user.post_number_of_likes(post)}}</h5>
+      </div>
+    </div>
+  </div>
+
+<div>
+  <div style="display: flex;">
+    <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}} " alt="Snow" style="width:25px;height:30px;padding:0px;background-color:#1d2124" align="top" ><h5>{{current_user.number_of_comments(post)}}</h5>
+  </div>
+</div>
+  </div>
+
+            
+<br> 
+             {%if current_user.has_liked_post(post)%}
+
+             
+             
+
+            <div class="btn-toolbar pull-left">
+              <a href="{{url_for('posts.action_like', post_id=post.id, action = 'unlike')}}"> <button  class="btn mr-3 btn-sm btn-secondary like" memberid = {{post.id}}><i class="fa fa-thumbs-up">  Unlike  </i> </button></a>
+             <a href="{{url_for('posts.post', post_id=post.id)}}"> <button class="btn btn-sm mr-3 btn-dark"><i class="fa fa-commenting-o">Comment</i> </button></a>
+          </div>
+
+          {%else%}
+             
+          <div class="btn-toolbar pull-left">
+            <a href="{{url_for('posts.action_like', post_id=post.id, action = 'like')}}"> <button  class="btn mr-3 btn-primary btn-sm like" memberid = {{post.id}}><i class="fa fa-thumbs-up">  Like  </i> </button></a>
+           <a href="{{url_for('posts.post', post_id=post.id)}}"> <button class="btn mr-3 btn-sm btn-dark"><i class="fa fa-commenting-o">Comment</i> </button></a>
+        </div>
+
+          {%endif%}
+
+        </article>
+    {% endfor %}
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if posts.page == page_num %}
+          <a class="btn btn-info mb-4" href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %} 
+    
+    {% else %}
+    <br>
+    <br>
+    <br>
+    <h1>  No post for the search made </h1>
+
+    {% endif %}
+    
+
+{% endblock content %} 
