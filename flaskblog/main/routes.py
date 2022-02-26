@@ -26,6 +26,6 @@ def search():
     page = request.args.get('page', 1, type=int)
     keyword = request.form['keyword']
     search = '%{}%'.format(keyword)
-    posts = Post.query.filter(Post.title.like(search) | Post.content.contains(search)).paginate(per_page=5, page=page)
+    posts = Post.query.filter(Post.title.ilike(search) | Post.content.contains(search)).paginate(per_page=5, page=page)
     logger.debug('user {} search with keyword {} to about page'.format(current_user.get_id(), keyword))
     return render_template('home.html', posts=posts, keyword=keyword)

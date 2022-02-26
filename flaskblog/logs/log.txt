@@ -806,3 +806,11 @@
 [2022-02-26 16:49:46,910  DEBUG]  user 3 routed to home page
 [2022-02-26 16:49:49,419  INFO]  User 3 logout successfully
 [2022-02-26 16:49:51,119  DEBUG]  user None routed to home page
+[2022-02-26 17:29:47,628  DEBUG]  user 1 routed to home page
+[2022-02-26 17:29:59,554  DEBUG]  user 1 search with keyword one to about page
+[2022-02-26 17:30:07,590  DEBUG]  user 1 search with keyword ola to about page
+[2022-02-26 17:30:14,754  DEBUG]  user 1 search with keyword video to about page
+[2022-02-26 17:30:21,657  DEBUG]  user 1 search with keyword test to about page
+[2022-02-26 17:30:38,212  INFO]  user 1 created a new post with post id [6]
+[2022-02-26 17:30:38,240  DEBUG]  user 1 routed to home page
+[2022-02-26 17:30:43,261  DEBUG]  user 1 search with keyword test to about page
