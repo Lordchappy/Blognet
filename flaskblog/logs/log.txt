@@ -803,3 +803,6 @@
 [2022-02-26 16:34:56,700  INFO]  Message sent to adekoyaisraelbamidele12@gmail.com failed with error 0
 [2022-02-26 16:38:50,613  INFO]  User Test with user id 3 successfully logged In
 [2022-02-26 16:38:50,658  DEBUG]  user 3 routed to home page
+[2022-02-26 16:49:46,910  DEBUG]  user 3 routed to home page
+[2022-02-26 16:49:49,419  INFO]  User 3 logout successfully
+[2022-02-26 16:49:51,119  DEBUG]  user None routed to home page

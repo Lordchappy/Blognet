@@ -12,7 +12,7 @@ def about():
 
 @main.route('/')
 @main.route('/home', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def home():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(per_page=5, page=page)
