@@ -788,3 +788,18 @@
 [2022-02-26 15:46:14,427  INFO]  User 2 directed to users post
 [2022-02-26 15:47:28,156  INFO]  User 2 directed to users post
 [2022-02-26 15:47:40,154  DEBUG]  user 2 routed to home page
+[2022-02-26 16:24:58,713  DEBUG]  user 2 routed to home page
+[2022-02-26 16:25:43,021  DEBUG]  user 2 routed to home page
+[2022-02-26 16:25:46,891  INFO]  User 2 logout successfully
+[2022-02-26 16:27:00,313  ERROR]  message failed for reset mail failed for user 1 with (421, b'Service not available')
+[2022-02-26 16:27:00,315  INFO]  Message sent to adekoyaolamide643@gmail.com failed with error 0
+[2022-02-26 16:27:54,617  ERROR]  message failed for reset mail failed for user 1 with (421, b'Service not available')
+[2022-02-26 16:27:54,618  INFO]  Message sent to adekoyaolamide643@gmail.com failed with error 0
+[2022-02-26 16:33:36,380  DEBUG]  user 1 routed to home page
+[2022-02-26 16:34:14,783  DEBUG]  user 1 routed to home page
+[2022-02-26 16:34:18,965  INFO]  User 1 logout successfully
+[2022-02-26 16:34:51,090  INFO]  New user Test created with id 3
+[2022-02-26 16:34:56,698  ERROR]  message failed for reset mail failed for user 3 with (421, b'Service not available')
+[2022-02-26 16:34:56,700  INFO]  Message sent to adekoyaisraelbamidele12@gmail.com failed with error 0
+[2022-02-26 16:38:50,613  INFO]  User Test with user id 3 successfully logged In
+[2022-02-26 16:38:50,658  DEBUG]  user 3 routed to home page
