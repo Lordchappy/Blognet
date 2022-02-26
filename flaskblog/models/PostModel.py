@@ -8,8 +8,8 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     images = db.Column(db.PickleType, nullable=True, default=None)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    comments = db.relationship('Comment', backref='comment_post', lazy=True)
-    post_likes = db.relationship('PostLike', backref='post', lazy='dynamic')
+    comments = db.relationship('Comment', backref='comment_post', cascade = "all,delete-orphan", lazy=True)
+    post_likes = db.relationship('PostLike', backref='post',   cascade = "all,delete-orphan", lazy='dynamic')
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"

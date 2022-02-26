@@ -78,3 +78,9 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+.responsive {
+
+  width: 100%;
+  height: auto;
+}

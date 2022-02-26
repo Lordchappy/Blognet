@@ -7,7 +7,7 @@ class Reply(db.Model):
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
     comment_id = db.Column(db.Integer, db.ForeignKey('comment.id'), nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    likes = db.relationship('ReplyLike', backref='reply', lazy='dynamic')
+    likes = db.relationship('ReplyLike', backref='reply',   cascade = "all,delete-orphan",lazy='dynamic')
 
     def __repr__(self):
         return str(self.id)

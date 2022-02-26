@@ -18,21 +18,38 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     verified = db.Column(db.Integer, nullable = False, default = 0)
-    posts = db.relationship('Post', backref='author', lazy=True)
-    comments = db.relationship('Comment', backref='comment_author', lazy=True)
-    reply = db.relationship('Reply', backref='reply_user', lazy=True)
+    
+    posts = db.relationship('Post', 
+                                    backref= 'author', 
+                                    cascade = "all,delete-orphan",
+                                    lazy=True)
+    
+    comments = db.relationship('Comment',
+                                    backref='comment_author',
+                                    cascade = "all,delete-orphan",
+                                    lazy=True)
+            
+    reply = db.relationship('Reply',
+                                    backref='reply_user', 
+                                    cascade = "all,delete-orphan", 
+                                    lazy=True)
+            
     post_liked = db.relationship('PostLike',
-      foreign_keys='PostLike.user_id',
-      backref='user',
-      lazy='dynamic')
+                                    foreign_keys='PostLike.user_id',
+                                    backref='user',
+                                    cascade = "all,delete-orphan",
+                                    lazy='dynamic')
+        
     comment_liked = db.relationship('CommentLike',
-      foreign_keys='CommentLike.user_id',
-      backref='user',
-      lazy='dynamic')
+                                    foreign_keys='CommentLike.user_id',
+                                    backref='user',
+                                    cascade = "all,delete-orphan",
+                                    lazy='dynamic')
     reply_liked = db.relationship('ReplyLike',
-      foreign_keys='ReplyLike.user_id',
-      backref='user',
-      lazy='dynamic')
+                                    foreign_keys='ReplyLike.user_id',
+                                    backref='user',
+                                    cascade = "all,delete-orphan",
+                                    lazy='dynamic')
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(app.config['SECRET_KEY'], expires_sec)

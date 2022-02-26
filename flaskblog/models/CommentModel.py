@@ -7,8 +7,8 @@ class Comment(db.Model):
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'), nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    comment_likes = db.relationship('CommentLike', backref='post', lazy='dynamic')
-    reply = db.relationship('Reply', backref='comment_reply', lazy=True)
+    comment_likes = db.relationship('CommentLike', backref='post',  cascade = "all,delete-orphan", lazy='dynamic')
+    reply = db.relationship('Reply', backref='comment_reply', cascade = "all,delete-orphan", lazy=True)
 
     def __repr__(self):
         return f"Comment({self.id})"
