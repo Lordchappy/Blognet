@@ -26,6 +26,7 @@ def send_reset_email(user):
         mail.send(msg)
         logger.info('message successfully sent to [{}] for reset mail  to user {}'.format(user.email, user.id))
     except Exception as err:
+        print(err)
         logger.error('message failed for reset mail failed for user {} with {}'.format(user.id, err))
 
 
