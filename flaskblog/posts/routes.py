@@ -1,3 +1,5 @@
+from ctypes import sizeof
+from itertools import count
 from flask import Blueprint, request, render_template, redirect, abort, url_for, flash
 import os
 from flaskblog.comment.forms import CommentForm
@@ -14,26 +16,30 @@ posts = Blueprint('posts', __name__)
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
+    
         if len(form.files_upload.data) > 2:
-            form.files.data = None
+            form.files_upload.data = None
             flash('Maximum of Images Exceeeded ', 'info')
             return render_template('create_post.html', title='New Post', form=form, legend='New Post')
-        file_names = None
-        post = Post(title=form.title.data, content=form.content.data, author=current_user, images=file_names)
+        
+        post = Post(title=form.title.data, content=form.content.data, author=current_user, images=None)
         db.session.add(post)
         db.session.commit()
-        if form.files_upload.data:
-            file_names =[]
-            files = request.files.getlist(form.files_upload.name)
-            for num,file in enumerate(files):
-                file_content =  file.stream.read()
-                _, ext = os.path.splitext(file.filename)
-                filename = "Post{}-{}{}".format(post.id,str(num),str(ext).lower())
-                with open(os.path.join(app.root_path, 'static/imagefolder', filename), 'wb') as f:
-                    f.write(file_content)
-                    file_names.append(filename)   
-            post.images = file_names
-            db.session.commit()
+    
+        file_uploaded = str(form.files_upload.data)
+        if file_uploaded.__contains__("image") or file_uploaded.__contains__("video"):
+            if form.files_upload.data:
+                file_names =[]
+                files = request.files.getlist(form.files_upload.name)
+                for num,file in enumerate(files):
+                    file_content =  file.stream.read()
+                    _, ext = os.path.splitext(file.filename)
+                    filename = "Post{}-{}{}".format(post.id,str(num),str(ext).lower())
+                    with open(os.path.join(app.root_path, 'static/imagefolder', filename), 'wb') as f:
+                        f.write(file_content)
+                        file_names.append(filename)   
+                post.images = file_names
+                db.session.commit()
         flash(' Your post has been created ', 'success')
         logger.info('user {} created a new post with post id [{}]'.format(current_user.get_id(), post.id))
         return redirect(url_for('main.home'))

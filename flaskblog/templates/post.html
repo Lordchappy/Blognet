@@ -25,6 +25,7 @@
 
 
     {% if post.images is not  none %}
+      
 
 
     {% if post.images| count == 1 %}
@@ -86,12 +87,12 @@
 <br>
 <div style="display: flex;">
   <div style="display: flex; ">
-    <h5><img src="{{url_for('static', filename ='imagefolder/like.gif')}}" alt="Snow" style="width:25px;height:30px;padding:0px" align:right><h5>{{current_user.post_number_of_likes(post)}}</h5>
+    &nbsp; &nbsp; &nbsp; &nbsp;<h5><img src="{{url_for('static', filename ='imagefolder/like.png')}}" alt="Snow" style="width:40px;height:40px;padding:0px" align:right> &nbsp;<h2>{{current_user.post_number_of_likes(post)}}</h2>
 
   </div>
 
   <div style="display: flex;">
-    <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}}" alt="Snow" style="width:25px;height:30px;padding:0px"><h5>{{current_user.number_of_comments(post)}}</h5>
+    <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}}" alt="Snow" style="width:40px;height:40px;padding:0px">&nbsp;<h2>{{current_user.number_of_comments(post)}}</h2>
 
   </div>
 </div>
@@ -144,12 +145,12 @@
 
           <div style="display: flex;">
             <div style="display: flex; ">
-              <h5><img src="{{url_for('static', filename ='imagefolder/like.gif')}}" alt="Snow" style="width:25px;height:30px;padding:0px" align:right><h5>{{current_user.comment_number_of_likes(comment)}}</h5>
+              <h5><img src="{{url_for('static', filename ='imagefolder/like.png')}}" alt="Snow" style="width:30px;height:30px;padding:0px" align:right>&nbsp;<h3>{{current_user.comment_number_of_likes(comment)}}</h3>
           
             </div>
           
             <div style="display: flex;">
-              <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}}" alt="Snow" style="width:25px;height:30px;padding:0px"><h5>{{current_user.number_of_reply_for_comment(comment)}}</h5>
+      &nbsp; &nbsp; &nbsp; &nbsp; <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}}" alt="Snow" style="width:25px;height:30px;padding:0px">&nbsp; <h3>{{current_user.number_of_reply_for_comment(comment)}}</h3>
           
             </div>
           </div>

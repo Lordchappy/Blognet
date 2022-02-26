@@ -11,6 +11,99 @@
             </div>
             <h2><a class="article-title" href="{{url_for('posts.post', post_id=post.id)}}" style="color:#cfdde3">{{ post.title }}</a></h2>
             <p class="article-content" style="color:#cfdde3">{{ post.content }}</p>
+
+
+
+            {% if post.images is not  none %}
+
+
+            {% if post.images| count == 1 %}
+              {% for media in post.images %}
+              <center> 
+                {%if media.endswith("mp4")%}
+                <div class="center">
+                  <a href="{{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> 
+                    <video width="300" height="250" autoplay muted loop controls>
+                        <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/mp4">
+                        <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/ogg">
+                    </video>
+                  </a>
+                </div>
+
+                {%else%}
+                <div  class="center">
+                  <div class="column">
+                    <a href=" {{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> <img src="{{url_for('static', filename ='imagefolder/' + media)}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
+                  </div>
+                </div>
+
+                {%endif%}
+
+              </center>
+              {%endfor%}
+            {% endif %}
+
+
+            {% if post.images| count == 2 %}
+              <div class="row" class="center">
+                  {% for media in post.images %}
+                    {%if media.endswith("mp4")%}
+                      <div class="column">
+                        <a href="{{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> <video width="250" height="300" autoplay muted loop controls>
+                          <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/mp4">
+                          <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/ogg">
+                        </video></a>
+                      </div>
+
+                    {%else%}
+                        
+                          <div class="column">
+                            <a href=" {{url_for('static', filename ='imagefolder/' + media)}}" target="_blank"> <img src="{{url_for('static', filename ='imagefolder/' + media)}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
+                          </div>
+                       
+                    {%endif%}
+                  {%endfor%}
+
+              </div>
+            {% endif %}
+
+      {% endif %}
+
+
+      <br>
+
+
+      <div>
+        <div style="float: left;">
+          <div style="display: flex;">
+            <div style="display: flex;float: left; ">
+              <h5><img src="{{url_for('static', filename ='imagefolder/like.png')}}" alt="Snow" style="width:40px;height:40px;padding:0px" align:right> &nbsp; <h2>{{current_user.post_number_of_likes(post)}}</h2>
+            </div>
+          </div>
+        </div>
+       
+      
+      <div>
+        <div style="display: flex;">
+          &nbsp; &nbsp; &nbsp; &nbsp; <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}} " alt="Snow" style="width:40px;height:40px;padding:0px;background-color:#1d2124" align="top" > &nbsp;<h2>{{current_user.number_of_comments(post)}}</h2>
+        </div>
+      </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
         </article>
     {% endfor %}

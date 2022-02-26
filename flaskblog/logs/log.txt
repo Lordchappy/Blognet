@@ -541,3 +541,250 @@
 [2022-02-20 20:25:28,301  INFO]  User None password successfuly updated
 [2022-02-20 20:25:52,702  INFO]  User Olamide with user id 1 successfully logged In
 [2022-02-20 20:25:52,730  DEBUG]  user 1 routed to home page
+[2022-02-21 21:34:27,726  DEBUG]  user 1 routed to home page
+[2022-02-21 21:34:32,514  DEBUG]  user 1 routed to home page
+[2022-02-21 21:34:52,765  DEBUG]  user 1 routed to home page
+[2022-02-21 21:34:55,859  DEBUG]  user 1 routed to home page
+[2022-02-21 21:34:57,216  DEBUG]  user 1 routed to home page
+[2022-02-21 21:34:59,497  DEBUG]  user 1 routed to home page
+[2022-02-21 21:35:12,729  INFO]  User 1 logout successfully
+[2022-02-21 21:38:12,661  INFO]  New user Olamite created with id 2
+[2022-02-21 21:38:16,286  ERROR]  message failed for reset mail failed for user 2 with [Errno 11001] getaddrinfo failed
+[2022-02-21 21:38:16,287  INFO]  Message sent to adekoyaisraelbamidele@gmail.com failed with error 0
+[2022-02-21 21:38:18,102  ERROR]  message failed for reset mail failed for user 2 with [Errno 11001] getaddrinfo failed
+[2022-02-21 21:38:18,103  INFO]  Message sent to adekoyaisraelbamidele@gmail.com failed with error 0
+[2022-02-21 21:41:49,714  DEBUG]  user 2 routed to home page
+[2022-02-21 21:41:54,905  DEBUG]  user 2 search with keyword  to about page
+[2022-02-21 21:42:06,354  INFO]  user 2 created a new post with post id [1]
+[2022-02-21 21:42:06,377  DEBUG]  user 2 routed to home page
+[2022-02-21 21:47:47,693  DEBUG]  user 2 routed to home page
+[2022-02-21 21:48:58,014  DEBUG]  user 2 routed to home page
+[2022-02-21 21:49:06,464  DEBUG]  user 2 routed to home page
+[2022-02-21 21:52:13,987  DEBUG]  user 2 routed to home page
+[2022-02-21 21:53:33,958  DEBUG]  user 2 routed to home page
+[2022-02-21 21:54:10,534  DEBUG]  user 2 routed to home page
+[2022-02-21 21:59:14,423  INFO]  user 2 created a new post with post id [2]
+[2022-02-21 21:59:14,452  DEBUG]  user 2 routed to home page
+[2022-02-21 22:10:19,197  DEBUG]  user 2 route to post page with id [2]
+[2022-02-21 22:10:34,831  INFO]  user 2 Successfully deleted post 2
+[2022-02-21 22:10:34,865  DEBUG]  user 2 routed to home page
+[2022-02-21 22:10:38,965  DEBUG]  user 2 route to post page with id [1]
+[2022-02-21 22:10:43,130  INFO]  user 2 Successfully deleted post 1
+[2022-02-21 22:10:43,147  DEBUG]  user 2 routed to home page
+[2022-02-21 22:11:01,962  INFO]  user 2 created a new post with post id [1]
+[2022-02-21 22:11:01,984  DEBUG]  user 2 routed to home page
+[2022-02-21 22:11:57,379  INFO]  user 2 created a new post with post id [2]
+[2022-02-21 22:11:57,402  DEBUG]  user 2 routed to home page
+[2022-02-21 22:18:36,062  INFO]  user 2 created a new post with post id [3]
+[2022-02-21 22:18:36,113  DEBUG]  user 2 routed to home page
+[2022-02-21 22:19:49,368  DEBUG]  user 2 route to post page with id [3]
+[2022-02-21 22:19:54,546  INFO]  user 2 Successfully deleted post 3
+[2022-02-21 22:19:54,576  DEBUG]  user 2 routed to home page
+[2022-02-21 22:19:57,855  DEBUG]  user 2 route to post page with id [2]
+[2022-02-21 22:20:02,515  INFO]  user 2 Successfully deleted post 2
+[2022-02-21 22:20:02,539  DEBUG]  user 2 routed to home page
+[2022-02-21 22:20:04,882  DEBUG]  user 2 route to post page with id [1]
+[2022-02-21 22:20:09,539  INFO]  user 2 Successfully deleted post 1
+[2022-02-21 22:20:09,558  DEBUG]  user 2 routed to home page
+[2022-02-21 22:30:14,086  INFO]  user 2 created a new post with post id [1]
+[2022-02-21 22:30:14,131  DEBUG]  user 2 routed to home page
+[2022-02-21 22:31:50,363  INFO]  user 2 created a new post with post id [2]
+[2022-02-21 22:31:50,380  DEBUG]  user 2 routed to home page
+[2022-02-21 22:32:24,821  DEBUG]  user 2 route to post page with id [2]
+[2022-02-21 22:32:28,620  INFO]  user 2 Successfully deleted post 2
+[2022-02-21 22:32:28,640  DEBUG]  user 2 routed to home page
+[2022-02-21 22:32:30,496  DEBUG]  user 2 route to post page with id [1]
+[2022-02-21 22:32:38,203  INFO]  user 2 Successfully deleted post 1
+[2022-02-21 22:32:38,233  DEBUG]  user 2 routed to home page
+[2022-02-21 22:32:58,658  INFO]  user 2 created a new post with post id [1]
+[2022-02-21 22:32:58,695  DEBUG]  user 2 routed to home page
+[2022-02-21 22:35:27,263  DEBUG]  user 2 route to post page with id [1]
+[2022-02-21 22:35:31,266  INFO]  user 2 Successfully deleted post 1
+[2022-02-21 22:35:31,293  DEBUG]  user 2 routed to home page
+[2022-02-21 22:35:43,510  INFO]  user 2 created a new post with post id [1]
+[2022-02-21 22:35:43,542  DEBUG]  user 2 routed to home page
+[2022-02-21 22:36:39,556  DEBUG]  user 2 route to post page with id [1]
+[2022-02-21 22:36:43,229  INFO]  user 2 Successfully deleted post 1
+[2022-02-21 22:36:43,253  DEBUG]  user 2 routed to home page
+[2022-02-21 22:36:55,122  INFO]  user 2 created a new post with post id [1]
+[2022-02-21 22:36:55,147  DEBUG]  user 2 routed to home page
+[2022-02-21 22:38:42,573  DEBUG]  user 2 route to post page with id [1]
+[2022-02-21 22:38:47,334  INFO]  user 2 Successfully deleted post 1
+[2022-02-21 22:38:47,369  DEBUG]  user 2 routed to home page
+[2022-02-21 22:39:00,605  INFO]  user 2 created a new post with post id [1]
+[2022-02-21 22:39:00,625  DEBUG]  user 2 routed to home page
+[2022-02-21 22:39:24,301  DEBUG]  user 2 route to post page with id [1]
+[2022-02-21 22:39:29,933  INFO]  user 2 Successfully deleted post 1
+[2022-02-21 22:39:29,962  DEBUG]  user 2 routed to home page
+[2022-02-21 22:41:23,727  INFO]  user 2 created a new post with post id [1]
+[2022-02-21 22:41:23,779  DEBUG]  user 2 routed to home page
+[2022-02-26 13:34:56,391  DEBUG]  user 2 routed to home page
+[2022-02-26 13:35:29,560  INFO]  user 2 created a new post with post id [2]
+[2022-02-26 13:35:29,820  DEBUG]  user 2 routed to home page
+[2022-02-26 13:36:40,897  INFO]  user 2 created a new post with post id [3]
+[2022-02-26 13:36:40,932  DEBUG]  user 2 routed to home page
+[2022-02-26 13:37:26,909  INFO]  user 2 created a new post with post id [4]
+[2022-02-26 13:37:26,945  DEBUG]  user 2 routed to home page
+[2022-02-26 13:38:36,238  DEBUG]  user 2 route to post page with id [4]
+[2022-02-26 13:38:40,727  INFO]  user 2 Successfully deleted post 4
+[2022-02-26 13:38:40,830  DEBUG]  user 2 routed to home page
+[2022-02-26 13:38:43,469  DEBUG]  user 2 route to post page with id [3]
+[2022-02-26 13:38:47,505  INFO]  user 2 Successfully deleted post 3
+[2022-02-26 13:38:47,523  DEBUG]  user 2 routed to home page
+[2022-02-26 13:38:50,516  DEBUG]  user 2 route to post page with id [2]
+[2022-02-26 13:38:55,247  INFO]  user 2 Successfully deleted post 2
+[2022-02-26 13:38:55,296  DEBUG]  user 2 routed to home page
+[2022-02-26 13:38:58,821  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:39:03,512  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:39:03,529  DEBUG]  user 2 routed to home page
+[2022-02-26 13:39:15,048  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:39:15,068  DEBUG]  user 2 routed to home page
+[2022-02-26 13:41:17,748  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:41:22,137  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:41:22,168  DEBUG]  user 2 routed to home page
+[2022-02-26 13:41:41,011  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:41:41,043  DEBUG]  user 2 routed to home page
+[2022-02-26 13:42:15,771  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:42:20,652  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:42:20,683  DEBUG]  user 2 routed to home page
+[2022-02-26 13:42:38,209  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:42:38,231  DEBUG]  user 2 routed to home page
+[2022-02-26 13:43:18,434  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:43:23,012  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:43:23,048  DEBUG]  user 2 routed to home page
+[2022-02-26 13:43:44,237  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:43:44,273  DEBUG]  user 2 routed to home page
+[2022-02-26 13:44:11,944  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:44:15,552  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:44:15,573  DEBUG]  user 2 routed to home page
+[2022-02-26 13:44:25,036  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:44:25,052  DEBUG]  user 2 routed to home page
+[2022-02-26 13:46:31,274  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:46:35,888  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:46:35,916  DEBUG]  user 2 routed to home page
+[2022-02-26 13:46:52,882  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:46:52,940  DEBUG]  user 2 routed to home page
+[2022-02-26 13:48:14,176  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:48:19,434  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:48:19,459  DEBUG]  user 2 routed to home page
+[2022-02-26 13:51:51,568  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:51:51,598  DEBUG]  user 2 routed to home page
+[2022-02-26 13:52:45,688  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:52:49,787  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:52:49,839  DEBUG]  user 2 routed to home page
+[2022-02-26 13:53:27,746  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:53:27,787  DEBUG]  user 2 routed to home page
+[2022-02-26 13:54:54,522  INFO]  user 2 created a new post with post id [2]
+[2022-02-26 13:54:54,557  DEBUG]  user 2 routed to home page
+[2022-02-26 13:56:07,050  DEBUG]  user 2 route to post page with id [2]
+[2022-02-26 13:56:12,174  INFO]  user 2 Successfully deleted post 2
+[2022-02-26 13:56:12,201  DEBUG]  user 2 routed to home page
+[2022-02-26 13:56:13,857  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:56:17,683  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:56:17,704  DEBUG]  user 2 routed to home page
+[2022-02-26 13:56:32,494  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:56:32,519  DEBUG]  user 2 routed to home page
+[2022-02-26 13:57:35,299  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:57:40,159  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:57:40,191  DEBUG]  user 2 routed to home page
+[2022-02-26 13:57:48,861  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:57:48,890  DEBUG]  user 2 routed to home page
+[2022-02-26 13:59:04,670  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 13:59:08,164  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 13:59:08,198  DEBUG]  user 2 routed to home page
+[2022-02-26 13:59:21,607  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 13:59:21,628  DEBUG]  user 2 routed to home page
+[2022-02-26 14:00:28,306  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 14:00:31,801  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 14:00:31,824  DEBUG]  user 2 routed to home page
+[2022-02-26 14:02:35,463  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 14:02:35,489  DEBUG]  user 2 routed to home page
+[2022-02-26 14:03:19,633  INFO]  user 2 created a new post with post id [2]
+[2022-02-26 14:03:19,660  DEBUG]  user 2 routed to home page
+[2022-02-26 14:04:37,594  DEBUG]  user 2 route to post page with id [2]
+[2022-02-26 14:04:42,326  INFO]  user 2 Successfully deleted post 2
+[2022-02-26 14:04:42,351  DEBUG]  user 2 routed to home page
+[2022-02-26 14:04:45,295  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 14:04:49,400  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 14:04:49,424  DEBUG]  user 2 routed to home page
+[2022-02-26 14:05:05,069  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 14:05:05,093  DEBUG]  user 2 routed to home page
+[2022-02-26 14:06:01,880  INFO]  user 2 created a new post with post id [2]
+[2022-02-26 14:06:01,906  DEBUG]  user 2 routed to home page
+[2022-02-26 14:06:40,678  DEBUG]  user 2 route to post page with id [2]
+[2022-02-26 14:06:45,138  INFO]  user 2 Successfully deleted post 2
+[2022-02-26 14:06:45,161  DEBUG]  user 2 routed to home page
+[2022-02-26 14:07:01,315  INFO]  user 2 created a new post with post id [2]
+[2022-02-26 14:07:01,338  DEBUG]  user 2 routed to home page
+[2022-02-26 14:09:07,417  DEBUG]  user 2 route to post page with id [2]
+[2022-02-26 14:09:12,147  INFO]  user 2 Successfully deleted post 2
+[2022-02-26 14:09:12,171  DEBUG]  user 2 routed to home page
+[2022-02-26 14:12:10,800  INFO]  user 2 created a new post with post id [2]
+[2022-02-26 14:12:10,839  DEBUG]  user 2 routed to home page
+[2022-02-26 14:12:49,301  DEBUG]  user 2 route to post page with id [2]
+[2022-02-26 14:12:53,261  INFO]  user 2 Successfully deleted post 2
+[2022-02-26 14:12:53,294  DEBUG]  user 2 routed to home page
+[2022-02-26 14:12:55,518  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 14:12:59,493  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 14:12:59,511  DEBUG]  user 2 routed to home page
+[2022-02-26 14:13:09,930  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 14:13:09,950  DEBUG]  user 2 routed to home page
+[2022-02-26 14:14:00,692  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 14:14:04,685  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 14:14:04,717  DEBUG]  user 2 routed to home page
+[2022-02-26 14:14:13,855  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 14:14:13,876  DEBUG]  user 2 routed to home page
+[2022-02-26 14:19:32,847  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 14:33:56,253  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 14:33:56,302  DEBUG]  user 2 routed to home page
+[2022-02-26 14:40:21,392  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 14:40:21,452  DEBUG]  user 2 routed to home page
+[2022-02-26 14:41:20,277  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 14:41:24,943  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 14:41:25,045  DEBUG]  user 2 routed to home page
+[2022-02-26 14:42:05,819  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 14:42:05,854  DEBUG]  user 2 routed to home page
+[2022-02-26 14:42:36,252  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 14:42:39,654  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 14:42:39,681  DEBUG]  user 2 routed to home page
+[2022-02-26 14:43:49,335  INFO]  user 2 created a new post with post id [1]
+[2022-02-26 14:43:49,375  DEBUG]  user 2 routed to home page
+[2022-02-26 14:45:06,163  DEBUG]  user 2 route to post page with id [1]
+[2022-02-26 14:45:10,009  INFO]  user 2 Successfully deleted post 1
+[2022-02-26 14:45:10,049  DEBUG]  user 2 routed to home page
+[2022-02-26 14:46:57,766  DEBUG]  user 2 routed to home page
+[2022-02-26 14:48:33,984  INFO]  user 2 created a new post with post id [4]
+[2022-02-26 14:48:34,035  DEBUG]  user 2 routed to home page
+[2022-02-26 14:50:58,733  INFO]  user 2 created a new post with post id [5]
+[2022-02-26 14:50:58,768  DEBUG]  user 2 routed to home page
+[2022-02-26 14:52:05,311  DEBUG]  user 2 routed to home page
+[2022-02-26 14:53:33,358  DEBUG]  user 2 routed to home page
+[2022-02-26 14:55:30,540  DEBUG]  user 2 routed to home page
+[2022-02-26 15:17:53,078  DEBUG]  user 2 routed to home page
+[2022-02-26 15:18:35,595  DEBUG]  user 2 routed to home page
+[2022-02-26 15:18:55,143  DEBUG]  user 2 routed to home page
+[2022-02-26 15:19:17,509  DEBUG]  user 2 routed to home page
+[2022-02-26 15:19:46,150  DEBUG]  user 2 routed to home page
+[2022-02-26 15:21:57,689  DEBUG]  user 2 routed to home page
+[2022-02-26 15:23:29,829  DEBUG]  user 2 routed to home page
+[2022-02-26 15:26:13,204  DEBUG]  user 2 routed to home page
+[2022-02-26 15:26:47,415  DEBUG]  user 2 routed to home page
+[2022-02-26 15:29:41,666  DEBUG]  user 2 routed to home page
+[2022-02-26 15:30:14,277  DEBUG]  user 2 routed to home page
+[2022-02-26 15:30:30,994  DEBUG]  user 2 routed to home page
+[2022-02-26 15:30:44,560  DEBUG]  user 2 routed to home page
+[2022-02-26 15:31:07,860  DEBUG]  user 2 routed to home page
+[2022-02-26 15:31:21,828  DEBUG]  user 2 routed to home page
+[2022-02-26 15:31:53,755  DEBUG]  user 2 route to post page with id [5]
+[2022-02-26 15:37:55,241  DEBUG]  user 2 routed to home page
+[2022-02-26 15:37:59,904  DEBUG]  user 2 route to post page with id [5]
+[2022-02-26 15:38:10,059  INFO]  user 2 commented on 5
+[2022-02-26 15:38:10,084  DEBUG]  user 2 route to post page with id [5]
+[2022-02-26 15:38:42,469  DEBUG]  user 2 route to post page with id [5]
+[2022-02-26 15:44:05,739  INFO]  user 2 reply to comment 1
+[2022-02-26 15:44:19,541  DEBUG]  user 2 route to about page
+[2022-02-26 15:44:21,534  DEBUG]  user 2 routed to home page
+[2022-02-26 15:44:24,211  INFO]  User 2 directed to users post
+[2022-02-26 15:46:14,427  INFO]  User 2 directed to users post
+[2022-02-26 15:47:28,156  INFO]  User 2 directed to users post
+[2022-02-26 15:47:40,154  DEBUG]  user 2 routed to home page
