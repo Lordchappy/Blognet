@@ -886,3 +886,15 @@
 [2022-02-26 23:12:29,584  DEBUG]  user 2 routed to home page
 [2022-02-26 23:13:09,604  DEBUG]  user 2 route to post page with id [2]
 [2022-02-26 23:13:38,139  DEBUG]  user 2 routed to home page
+[2022-02-27 01:32:38,882  DEBUG]  user 2 routed to home page
+[2022-02-27 01:32:39,800  DEBUG]  user 2 routed to home page
+[2022-02-27 01:32:57,286  DEBUG]  user 2 route to post page with id [3]
+[2022-02-27 01:33:01,666  INFO]  user 2 Successfully deleted post 3
+[2022-02-27 01:33:01,694  DEBUG]  user 2 routed to home page
+[2022-02-27 01:33:03,707  DEBUG]  user 2 route to post page with id [2]
+[2022-02-27 01:33:08,130  INFO]  user 2 Successfully deleted post 2
+[2022-02-27 01:33:08,156  DEBUG]  user 2 routed to home page
+[2022-02-27 01:33:20,428  DEBUG]  user 2 search with keyword  to about page
+[2022-02-27 01:33:24,310  DEBUG]  user 2 search with keyword  to about page
+[2022-02-27 01:33:33,886  DEBUG]  user 2 search with keyword  to about page
+[2022-02-27 01:33:35,795  DEBUG]  user 2 search with keyword  to about page
