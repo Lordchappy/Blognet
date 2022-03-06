@@ -1,16 +1,27 @@
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize, sent_tokenize
-import heapq
-from keras.preprocessing.sequence import pad_sequences
-import keras, tensorflow as tf
-from keras.models import load_model
-import pickle
-model = tf.keras.models.load_model('flaskblog/machine/Model.h5')
-with open('flaskblog/machine/tokenize.pickle', 'rb') as (handle):
-    tokenizer = pickle.load(handle)
+'''
+This file defines functions for Sentiment Analysis on a given text
+     
+                        and 
+              
+Text Summarizer function for extracting useful informmations in a text 
 
-def sentiment_analysis(text):
+
+
+'''
+
+
+def sentiment_analysis(text):  
+    #Importing all neccessary libraries 
+    from keras.models import load_model
+    from keras.preprocessing.sequence import pad_sequences
+    import pickle
+    
+    #Loading the saved model
+    model = load_model('flaskblog/machine/Model.h5')
+    with open('flaskblog/machine/tokenize.pickle', 'rb') as (handle):
+        tokenizer = pickle.load(handle)
+        
+    
     text_token = tokenizer.texts_to_sequences([text])
     text_pad = pad_sequences(text_token, maxlen=241, padding='pre')
     pred = model.predict(text_pad)
@@ -24,6 +35,9 @@ def sentiment_analysis(text):
 
 
 def summmarize(text, num):
+    import heapq
+    from nltk.corpus import stopwords
+    from nltk.tokenize import word_tokenize, sent_tokenize
     max_sentence = int(num)
     text = text.lower()
     Stopwords = set(stopwords.words('english'))

@@ -98,7 +98,7 @@
   <div style="float: left;">
     <div style="display: flex;">
       <div style="display: flex;float: left; ">
-        <h5><img src="{{url_for('static', filename ='imagefolder/like.png')}}" alt="Snow" style="width:40px;height:40px;padding:0px" align:right> &nbsp; <h2>{{current_user.post_number_of_likes(post)}}</h2>
+        <h5><img src="{{url_for('static', filename ='imagefolder/like.png')}}" alt="Snow" style="width:40px;height:40px;padding:0px" align:right> &nbsp; <h2>{{post_number_of_likes(post)}}</h2>
       </div>
     </div>
   </div>
@@ -106,16 +106,19 @@
 
 <div>
   <div style="display: flex;">
-    &nbsp; &nbsp; &nbsp; &nbsp; <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}} " alt="Snow" style="width:40px;height:40px;padding:0px;background-color:#1d2124" align="top" > &nbsp;<h2>{{current_user.number_of_comments(post)}}</h2>
+    &nbsp; &nbsp; &nbsp; &nbsp; <h5><img src="{{url_for('static', filename ='imagefolder/comment.png')}} " alt="Snow" style="width:40px;height:40px;padding:0px;background-color:#1d2124" align="top" > &nbsp;<h2>{{number_of_comments(post)}}</h2>
   </div>
 </div>
   </div>
+
+
+
+  {% if current_user.is_authenticated %}
 
             
 <br> 
              {%if current_user.has_liked_post(post)%}
 
-             
              
 
             <div class="btn-toolbar pull-left">
@@ -131,6 +134,8 @@
         </div>
 
           {%endif%}
+
+      {%endif%}
 
         </article>
     {% endfor %}

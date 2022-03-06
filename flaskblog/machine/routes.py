@@ -4,7 +4,7 @@ from flaskblog.machine.forms import SentimentForm, SummarizeForm
 from flaskblog.machine.utils import summmarize, sentiment_analysis
 machine = Blueprint('machine', __name__)
 
-@machine.route('/sentiment', methods=['GET', 'POST'])
+#@machine.route('/sentiment', methods=['GET', 'POST'])
 def sentiment():
     form = SentimentForm()
     if form.validate_on_submit():

@@ -27,10 +27,9 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data.lower()).first()
-        print(type(user.verified))
         if user.verified != 1:
             flash(' Kindly verify your Account!', 'info')
-            return redirect(url_for('users.verify_request', mail=(user.email)))
+            return redirect(url_for('users.verify_request', mail=user.email))
         if bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
@@ -40,8 +39,8 @@ def login():
             logger.info('User {} with user id {} successfully logged In'.format(user.username, user.id))
             return redirect(url_for('main.home'))
         flash('Login Unsuccessful. Kindly Confirm your Username and Password!', 'danger')
-        logger.error('User {} login unsuccessful'.format(current_user.get_id()))
-        logger.debug('User {} routed to login page'.format(current_user.get_id()))
+        logger.error('User with email {} login unsuccessful'.format(form.email.data))
+        logger.debug('User with email {} routed to login page'.format(form.email.data))
     return render_template('login.html', title='Login', form=form)
 
 
