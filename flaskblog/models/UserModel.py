@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(500), nullable=False, 
-                           default='https://res.cloudinary.com/teamblog/image/upload/v1646713752/default_xfjzu9.jpg')
+                           default="https://res.cloudinary.com/teamblog/image/upload/v1646713752/default_xfjzu9.jpg")
     password = db.Column(db.String(60), nullable=False)
     verified = db.Column(db.Integer, nullable = False, default = 0)
     
