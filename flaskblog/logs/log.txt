@@ -92,3 +92,4 @@
 [2022-03-08 05:08:34,631  DEBUG]  user 1 routed to home page
 [2022-03-08 05:12:24,100  INFO]  user 1 information successfully updated
 [2022-03-08 05:12:54,819  INFO]  user 1 information successfully updated
+[2022-03-08 05:41:58,359  INFO]  New user Ola created with id 1
