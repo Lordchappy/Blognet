@@ -8,6 +8,7 @@ from flaskblog.models.PostModel import Post
 from flaskblog.posts.forms import PostForm, UpdateForm
 from flaskblog import db, logger,app
 from flask_login import current_user, login_required
+from .utils import media, delete_post_images
 
 posts = Blueprint('posts', __name__)
 
@@ -29,15 +30,7 @@ def new_post():
         file_uploaded = str(form.files_upload.data)
         if file_uploaded.__contains__("image") or file_uploaded.__contains__("video"):
             if form.files_upload.data:
-                file_names =[]
-                files = request.files.getlist(form.files_upload.name)
-                for num,file in enumerate(files):
-                    file_content =  file.stream.read()
-                    _, ext = os.path.splitext(file.filename)
-                    filename = "Post{}-{}{}".format(post.id,str(num),str(ext).lower())
-                    with open(os.path.join(app.root_path, 'static/imagefolder', filename), 'wb') as f:
-                        f.write(file_content)
-                        file_names.append(filename)   
+                file_names = media(form,post)
                 post.images = file_names
                 db.session.commit()
         flash(' Your post has been created ', 'success')
@@ -88,7 +81,9 @@ def delete_post(post_id):
     if post.author != current_user:
         logger.error('user {} cannot delete post {}'.format(current_user.get_id(), post.id))
         abort(403)
-    db.session.delete(post)
+    db.session.delete(post) 
+    if post.images is not None:       
+        delete_post_images(post.images)
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     logger.info('user {} Successfully deleted post {}'.format(current_user.get_id(), post.id))

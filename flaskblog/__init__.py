@@ -5,6 +5,15 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 
+import cloudinary
+import cloudinary.uploader as Cloud 
+cloudinary.config(
+    cloud_name=os.environ.get('cloud_name'),
+    api_key= os.environ.get('cloud_api_key'),
+    api_secret= os.environ.get('cloud_secret_key')
+)
+
+
 
 import logging, logging.handlers
 log_file_name = 'flaskblog/logs/log.txt'

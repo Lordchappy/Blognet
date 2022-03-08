@@ -3,7 +3,7 @@
 <h1 class = "mb-3" style="color:#cfdde3">Posts by {{user.username}} ({{posts.total}})</h1>
     {% for post in posts.items %}
         <article class="media content-section" style="background: #1d2124;">
-         <img class ="rounded-circle article-img" src = "{{url_for('static', filename ='imagefolder/' + post.author.image_file)}}">
+         <img class ="rounded-circle article-img" src = "{{ post.author.image_file}}">
           <div class="media-body" >
             <div class="article-metadata">
               <a class="mr-2" href="{{url_for('users.user_posts',username =post.author.username)}}" style="color:#cfdde3">{{ post.author.username }}</a>
@@ -22,10 +22,10 @@
               <center> 
                 {%if media.endswith("mp4")%}
                 <div class="center">
-                  <a href="{{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> 
+                  <a href="{{ media}}"  target="_blank"> 
                     <video width="300" height="250" autoplay muted loop controls>
-                        <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/mp4">
-                        <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/ogg">
+                        <source src="{{media}}" type="video/mp4">
+                        <source src="{{media}}" type="video/ogg">
                     </video>
                   </a>
                 </div>
@@ -33,7 +33,7 @@
                 {%else%}
                 <div  class="center">
                   <div class="column">
-                    <a href=" {{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> <img src="{{url_for('static', filename ='imagefolder/' + media)}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
+                    <a href=" {{media}}"  target="_blank"> <img src="{{media}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
                   </div>
                 </div>
 
@@ -49,16 +49,16 @@
                   {% for media in post.images %}
                     {%if media.endswith("mp4")%}
                       <div class="column">
-                        <a href="{{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> <video width="250" height="300" autoplay muted loop controls>
-                          <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/mp4">
-                          <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/ogg">
+                        <a href="{{media}}"  target="_blank"> <video width="250" height="300" autoplay muted loop controls>
+                          <source src="{{ media}}" type="video/mp4">
+                          <source src="{{ media}}" type="video/ogg">
                         </video></a>
                       </div>
 
                     {%else%}
                         
                           <div class="column">
-                            <a href=" {{url_for('static', filename ='imagefolder/' + media)}}" target="_blank"> <img src="{{url_for('static', filename ='imagefolder/' + media)}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
+                            <a href=" {{media}}" target="_blank"> <img src="{{media}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
                           </div>
                        
                     {%endif%}

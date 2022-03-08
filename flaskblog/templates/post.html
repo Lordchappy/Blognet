@@ -5,7 +5,7 @@
 {% block content %}
 <article class="media content-section" style="background: #1d2124;">
   <img class="rounded-circle article-img"
-    src="{{ url_for('static', filename='imagefolder/' + post.author.image_file) }}">
+    src="{{post.author.image_file }}">
   <div class="media-body">
     <div class="article-metadata">
       <a class="mr-2" 
@@ -33,10 +33,10 @@
       <center> 
         {%if media.endswith("mp4")%}
         <div class="center">
-          <a href="{{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> 
+          <a href="{{ media}}"  target="_blank"> 
             <video width="300" height="250" autoplay muted loop controls>
-                <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/mp4">
-                <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/ogg">
+                <source src="{{ media}}" type="video/mp4">
+                <source src="{{ media}}" type="video/ogg">
             </video>
           </a>
         </div>
@@ -44,7 +44,7 @@
         {%else%}
         <div  class="center">
           <div class="column">
-            <a href=" {{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> <img src="{{url_for('static', filename ='imagefolder/' + media)}}" alt="Snow" style="width:250;height:300;" class="responsive"></a>
+            <a href="{{media}}"  target="_blank"> <img src="{{media}}" alt="Snow" style="width:250;height:200;" class="responsive"></a>
           </div>
         </div>
 
@@ -60,16 +60,16 @@
           {% for media in post.images %}
             {%if media.endswith("mp4")%}
               <div class="column">
-                <a href="{{url_for('static', filename ='imagefolder/' + media)}}"  target="_blank"> <video width="250" height="300" autoplay muted loop controls>
-                  <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/mp4">
-                  <source src="{{url_for('static', filename ='imagefolder/' + media)}}" type="video/ogg">
+                <a href="{{ media}}"  target="_blank"> <video width="250" height="300" autoplay muted loop controls>
+                  <source src="{{ media}}" type="video/mp4">
+                  <source src="{{ media}}" type="video/ogg">
                 </video></a>
               </div>
 
             {%else%}
                 
                   <div class="column">
-                    <a href=" {{url_for('static', filename ='imagefolder/' + media)}}" target="_blank"> <img src="{{url_for('static', filename ='imagefolder/' + media)}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
+                    <a href=" {{media}}" target="_blank"> <img src="{{media}}" alt="Snow" style="width:250px;height:300px;object-fit:cover;"></a>
                   </div>
                
             {%endif%}
@@ -127,7 +127,7 @@
           <div class="bg-#1d2124 p-2">
             <div class="d-flex flex-row user-info">
               <img class="rounded-circle"
-                src="{{ url_for('static', filename='imagefolder/' + comment.comment_author.image_file) }}" width="40">
+                src="{{ comment.comment_author.image_file }}" width="40">
               <div class="d-flex flex-column justify-content-start ml-2">
               {% if comment.author_id.username == current_user.username%}
                  <span class="d-block font-weight-bold name" style="color: #cfdde3;">author-{{comment.author_id.username}}</span>
@@ -212,7 +212,7 @@
             <fieldset class="form-group">
               <div class="d-flex flex-row align-items-start">
                 <img class="rounded-circle"
-                  src="{{ url_for('static', filename='imagefolder/' + current_user.image_file) }}" width="40">
+                  src="{{ current_user.image_file }}" width="40">
                 {{form.comment.label(class = "form-control-label " )}}
                 <style>
                   .form-control-label {color: #cfdde3;}

@@ -5,7 +5,7 @@
 {% block content %}
 <article class="media content-section" style="background: #1d2124;">
   <img class="rounded-circle article-img"
-    src="{{ url_for('static', filename='imagefolder/' + comment.comment_author.image_file) }}">
+    src="{{  comment.comment_author.image_file }}">
   <div class="media-body">
     <div class="article-metadata">
       <a class="mr-2" 
@@ -133,7 +133,7 @@
               <fieldset class="form-group">
                 <div class="d-flex flex-row align-items-start">
                   <img class="rounded-circle"
-                    src="{{ url_for('static', filename='imagefolder/' + current_user.image_file) }}" width="40">
+                    src="{{current_user.image_file}}" width="40">
                   {{form.reply.label(class = "form-control-label")}}
                      <style>
                     .form-control-label {color: #cfdde3;}

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import current_user, login_required, logout_user, login_user
-from flaskblog import db, bcrypt, logger
+from flaskblog import db, bcrypt, logger,Cloud
 from flaskblog.users.forms import RegistrationForm, LoginForm, UpdateForm, ResetPasswordForm, RequestRestForm, RequestVerifyForm
 from flaskblog.models.UserModel import User
 from flaskblog.models.PostModel import Post
@@ -141,6 +141,7 @@ def account():
     form = UpdateForm()
     if form.validate_on_submit():
         if form.picture.data:
+            Cloud.destroy(current_user.image_file.split(".")[2].split("/")[-1])
             image = save_picture(form.picture.data)
             current_user.image_file = image
         current_user.username = form.username.data
@@ -153,5 +154,4 @@ def account():
         if request.method == 'GET':
             form.username.data = current_user.username
             form.email.data = current_user.email
-        image = url_for('static', filename=('imagefolder/' + current_user.image_file))
-        return render_template('account.html', title='Account', image=image, form=form)
+        return render_template('account.html', title='Account', form=form)
