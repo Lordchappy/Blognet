@@ -1,7 +1,5 @@
 from flask import request
 import os
-
-from flask_restful import abort 
 from flaskblog import app,Cloud
 
 
@@ -20,4 +18,6 @@ def  media(form,post):
 
 def delete_post_images(files):
     for image_url in files:
-        Cloud.destroy(image_url.split(".")[2].split("/")[-1])
+        public_id = image_url.split(".")[2].split("/")[-1]
+        if public_id != "default_xfjzu9":
+            Cloud.destroy(public_id)
